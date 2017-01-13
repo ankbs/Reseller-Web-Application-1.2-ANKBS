@@ -1,0 +1,180 @@
+﻿<script>
+    isPortalConfigured = "@ViewBag.IsPortalConfigured" == "True";
+</script>
+
+<!-- ANKBS Content Start -->
+
+
+
+<style type="text/css">
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 0px auto;
+    }
+
+        .tg td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 0px;
+            overflow: hidden;
+            word-break: normal;
+        }
+
+        .tg th {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 0px;
+            overflow: hidden;
+            word-break: normal;
+        }
+
+        .tg .tg-ehoo {
+            font-weight: bold;
+            font-family: Tahoma, Geneva, sans-serif !important;
+        }
+
+        .tg .tg-cynk {
+            font-family: Tahoma, Geneva, sans-serif !important;
+            ;
+            vertical-align: top;
+        }
+
+        .tg .tg-gmhj {
+            font-family: Tahoma, Geneva, sans-serif !important;
+        }
+
+        .tg .tg-gr5b {
+            font-family: Tahoma, Geneva, sans-serif !important;
+            ;
+            background-color: #bbdaff;
+        }
+
+    tg .tg-7oru {
+        text-decoration: underline;
+        font-family: Tahoma, Geneva, sans-serif !important;
+        ;
+        vertical-align: top;
+    }
+
+    .tg .tg-1cay {
+        font-family: Tahoma, Geneva, sans-serif !important;
+        ;
+        background-color: #bbdaff;
+        vertical-align: top;
+    }
+</style>
+<table class="tg">
+    <tr>
+        <th class="tg-gr5b"></th>
+        <th class="tg-gr5b"></th>
+        <th class="tg-gr5b"></th>
+        <th class="tg-1cay"></th>
+        <th class="tg-1cay"><br></th>
+    </tr>
+    <tr>
+        <td class="tg-gr5b"></td>
+        <td class="tg-ehoo" colspan="3"><center><img src="~/Download/53841_RTG_Event_WindowsHeader.jpg" /></center></td>
+        <td class="tg-1cay"></td>
+    </tr>
+    <tr>
+        <td class="tg-gr5b"></td>
+        <td class="tg-gmhj" colspan="3"><center><h3>Herzlich Willkommen</h3></center><br /><center>hCloud Managed Services | Office 365 Online Shop</center></td>
+        <td class="tg-1cay"></td>
+    </tr>
+    <tr>
+        <td class="tg-1cay"></td>
+        <td class="tg-7oru"><b>hCloud Managed Services</b></td>
+        <td class="tg-7oru"><b>Office 365 und Security</b></td>
+        <td class="tg-7oru"><b>Kundeninformationen</b></td>
+        <td class="tg-1cay"></td>
+    </tr>
+    <tr>
+        <td class="tg-1cay"></td>
+        <td class="tg-cynk">
+            Mit unseren Manged Services bieten wir Ihnen<br /> standardisierte Hybrid Cloud Lösungen
+            basierend auf <br />Azure Infrastructure as a Service und Office 365.
+        </td>
+        <td class="tg-cynk">Identitäts- und Datensicherheit mit den Cloud <br />Sicherheitslösungen von Microsoft</td>
+        <td class="tg-cynk">
+            Sollten Sie schon Office 365 Kunde sein<br />
+            so befolgen Sie bitte die Hinweise auf<br />dieser Seite.
+        </td>
+        <td class="tg-1cay"></td>
+    </tr>
+    <tr>
+        <td class="tg-1cay"></td>
+        <td class="tg-1cay"></td>
+        <td class="tg-1cay"></td>
+        <td class="tg-1cay"></td>
+        <td class="tg-1cay"></td>
+    </tr>
+</table>
+
+
+<!-- ANKBS Content End -->
+
+
+<table id="OffersContainer" cellpadding="0" cellspacing="0" class="FullSize center">
+    <tbody>
+        @if (ViewBag.HeaderImage != null)
+        {
+            <tr>
+                <td class="offers-header">
+                    <img class="banner" src="@ViewBag.HeaderImage">
+                </td>
+            </tr>
+        }
+
+        <!-- ko if: viewModel.ShowProgress() -->
+        <tr>
+            <td class="Progress">
+                <img src="~/Content/Images/Plugins/ripple.gif" />
+            </td>
+        </tr>
+        <!-- /ko -->
+        <!-- ko if: viewModel.IsSet() -->
+        <!-- ko if: viewModel.IsPortalConfigured() -->
+        <tr>
+            <!-- ko stopBinding: true -->
+            <td id="PartnerOffersCatalogView"></td>
+            <!-- /ko -->
+        </tr>
+        <!-- /ko -->
+        <!-- ko ifnot: viewModel.IsPortalConfigured() -->
+        <tr>
+            <td class="PortalNotConfigured">
+                <label class="MetroNormal">@Resources.PortalNotConfiguredYet<br /></label>
+
+                @if (ViewBag.IsPortalAdmin)
+                {
+                    <label class="Link MetroNormal" data-bind="click: onConfigurePortalClicked">@Resources.ConfigurePortalMessage</label>
+                }
+            </td>
+        </tr>
+        <!-- /ko -->
+        <!-- /ko -->
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="footer">
+
+                <a class="rightAlignedElement" href="http://www.ankbs.de/impressum" title="Impressum" target="_blank">Impressum</a>
+                <a class="rightAlignedElement" href="http://blog.ugoffice365.ms" title="Office 365 Blog" target="_blank">UserGroup Office 365 Blog</a>
+
+                <label class="rightAlignedElement">@Resources.CopyRight - @ViewBag.OrganizationName</label>
+
+                @if (!string.IsNullOrWhiteSpace(@ViewBag.PrivacyAgreement))
+                {
+                    <a class="rightAlignedElement" href="@ViewBag.PrivacyAgreement" title="@Resources.PrivacyAgreementToolTip" target="_blank">@Resources.PrivacyAgreement</a>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
